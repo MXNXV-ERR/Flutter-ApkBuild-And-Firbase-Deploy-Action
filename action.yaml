@@ -1,8 +1,10 @@
-name: DEploy Flutter App directly to Firebase and Build Apk
+name: Deploy Flutter App directly to Firebase and Build Apk
+
 'on':
   push:
     branches:
       - main
+      - master
 jobs:
   build_and_deploy:
     name: "Build & Release"
@@ -26,4 +28,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TODOAPP_432FE }}'
           channelId: live
-          projectId: todoapp-432fe
+          projectId: '${{projectId}}'
+
+
+To automate the deployment of your Flutter app on Firebase and build APKs, create a GitHub Action workflow. The workflow will trigger on each push event, ensuring continuous integration. It will use Flutter's build tools to generate APKs and then deploy the app to Firebase Hosting using the Firebase CLI. Finally, the workflow will push the APKs to GitHub Releases, enabling easy distribution and version management. This streamlined process will save time and effort, making it convenient to deliver updates and improvements to your Flutter app.
